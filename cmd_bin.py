@@ -132,6 +132,20 @@ class App:
     def data(self):
         return self._odata
 
+    def get_keys(self, *keys, dval=None):
+        """
+        多值读取
+        :param keys:
+        :param dval:
+        :return:
+        """
+        dd = self._odata
+        for k in keys:
+            if k in dd:
+                return dd[k]
+
+        return dval
+
 
 class Command:
     """

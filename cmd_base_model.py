@@ -18,6 +18,7 @@ def text_save(file, data):  # save generate code, which can be modified to gener
         s = str(data[0][i]) + '\n'
         file.write(s)
 
+
 def execute_model(model_path, **params):
     """
     模型运行
@@ -70,4 +71,3 @@ def execute_model(model_path, **params):
 
         # Close file.
         file.close()
-

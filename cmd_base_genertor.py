@@ -45,6 +45,7 @@ class CmdList:
         :return:
         """
         app = cmd.app
+
         opt_list = ['model-path', 'M']
         if not app.check_opts(*opt_list):
             print(' --model-path 选项未设置，运行失败！')
@@ -55,9 +56,15 @@ class CmdList:
             print(f' --model-path={model_path} 不是一个有效的地址！')
             return
 
+        param = app.data()
+        param = param if isinstance(param, dict) else {}
+        num = app.get_keys('N', 'num')
+        if num is not None:
+            param['num'] = num
+
         # 条件引入
         import cmd_base_model
-        cmd_base_model.execute_model(model_path, **app.data())
+        cmd_base_model.execute_model(model_path, **param)
 
 
 if __name__ == "__main__":
