@@ -58,9 +58,16 @@ class CmdList:
 
         param = app.data()
         param = param if isinstance(param, dict) else {}
+
+        # -N, --num
         num = app.get_keys('N', 'num')
         if num is not None:
             param['num'] = num
+
+        # -O, --out-dir
+        out_dir = app.get_keys('out-dir', 'O')
+        if out_dir is not None:
+            param['out-dir'] = out_dir
 
         # 条件引入
         import cmd_base_model
